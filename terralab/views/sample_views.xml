@@ -1,0 +1,35 @@
+<odoo>
+  <data>
+
+    <!-- Views for managing TerraLab Samples -->
+    <record model="ir.ui.view" id="terralab.sample_tree">
+      <field name="name">terralab.sample.tree</field>
+      <field name="model">terralab.sample</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="sample_type"/>
+          <field name="serial_number"/>
+          <field name="order"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="terralab.sample_form">
+      <field name="name">terralab.sample.form</field>
+      <field name="model">terralab.sample</field>
+      <field name="arch" type="xml">
+          <form string="Sample Form">
+            <sheet>
+              <group>
+                <field name="sample_type"/>
+                <field name="serial_number"/>
+                <field name="order"/>
+                <field name="tests"/>
+              </group>
+            </sheet>
+          </form>
+      </field>
+    </record>
+
+  </data>
+</odoo>

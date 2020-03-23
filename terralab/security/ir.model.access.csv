@@ -5,3 +5,4 @@ access_terralab_testvariable,terralab.testvariable,model_terralab_testvariable,,
 access_terralab_testvariabletype,terralab.testvariabletype,model_terralab_testvariabletype,,1,1,1,1
 access_terralab_report,terralab.report,model_terralab_report,,1,1,1,1
 access_terralab_test,terralab.test,model_terralab_test,,1,1,1,1
+access_terralab_spreadsheet,terralab.spreadsheet,model_terralab_spreadsheet,,1,1,1,1
