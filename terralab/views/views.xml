@@ -1,0 +1,343 @@
+<odoo>
+  <data>
+    <!-- Views for managing TerraLab Sample Types -->
+    <record model="ir.ui.view" id="terralab.sampletype_tree">
+      <field name="name">terralab.sampletype.tree</field>
+      <field name="model">terralab.sampletype</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="terralab.sampletype_form">
+      <field name="name">terralab.sampletype.form</field>
+      <field name="model">terralab.sampletype</field>
+      <field name="arch" type="xml">
+          <form string="Sample Type Form">
+            <sheet>
+              <group>
+                <field name="name"/>
+              </group>
+            </sheet>
+          </form>
+      </field>
+    </record>
+
+    <!-- Views for managing TerraLab Test Variable Types -->
+    <record model="ir.ui.view" id="terralab.testvariabletype_tree">
+      <field name="name">terralab.testvariabletype.tree</field>
+      <field name="model">terralab.testvariabletype</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="test_type"/>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="terralab.testvariabletype_form">
+      <field name="name">terralab.testvariabletype.form</field>
+      <field name="model">terralab.testvariabletype</field>
+      <field name="arch" type="xml">
+          <form string="Test Variable Type Form">
+            <sheet>
+              <group>
+                <field name="name"/>
+              </group>
+            </sheet>
+          </form>
+      </field>
+    </record>
+
+    <!-- Views for managing TerraLab Orders -->
+    <record model="ir.ui.view" id="terralab.order_tree">
+      <field name="name">terralab.order.tree</field>
+      <field name="model">sale.order</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="terralab_status"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="terralab.order_form">
+      <field name="name">terralab.order.form</field>
+      <field name="model">sale.order</field>
+      <field name="arch" type="xml">
+          <form string="Order Form">
+            <sheet>
+              <group>
+                <field name="terralab_status"/>
+              </group>
+
+            </sheet>
+          </form>
+      </field>
+    </record>
+
+    <!-- Views for managing TerraLab Samples -->
+    <record model="ir.ui.view" id="terralab.sample_tree">
+      <field name="name">terralab.sample.tree</field>
+      <field name="model">terralab.sample</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="sample_type"/>
+          <field name="serial_number"/>
+          <field name="order"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="terralab.sample_form">
+      <field name="name">terralab.sample.form</field>
+      <field name="model">terralab.sample</field>
+      <field name="arch" type="xml">
+          <form string="Sample Form">
+            <sheet>
+              <group>
+                <field name="sample_type"/>
+                <field name="serial_number"/>
+                <field name="order"/>
+                <field name="tests"/>
+              </group>
+            </sheet>
+          </form>
+      </field>
+    </record>
+
+    <!-- Views for managing TerraLab Tests -->
+    <record model="ir.ui.view" id="terralab.test_tree">
+      <field name="name">terralab.test.tree</field>
+      <field name="model">terralab.test</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="sample"/>
+          <field name="test_type"/>
+          <field name="test_result"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="terralab.test_form">
+      <field name="name">terralab.test.form</field>
+      <field name="model">terralab.test</field>
+      <field name="arch" type="xml">
+          <form string="Test Form">
+            <sheet>
+              <notebook position="inside">
+                <page string="Test Settings">
+                  <group name="test_settings">
+                    <field name="test_type"/>
+                    <field name="test_result"/>
+                  </group>
+                </page>
+                <page string="Test Variables" name="terralab_test_variables">
+                  <field name="test_variables" widget="one2many" mode="tree,kanban">
+                    <tree string="TerraLab Test Variables">
+                      <field name="sample" />
+                      <field name="test_variable_type" />
+                      <field name="value" />
+                    </tree>
+                  </field>
+                </page>
+              </notebook>
+            </sheet>
+          </form>
+      </field>
+    </record>
+
+    <!-- Views for managing TerraLab Test Variables -->
+    <record model="ir.ui.view" id="terralab.testvariable_tree">
+      <field name="name">terralab.testvariable.tree</field>
+      <field name="model">terralab.testvariable</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="test"/>
+          <field name="sample"/>
+          <field name="test_variable_type"/>
+          <field name="value"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="terralab.testvariable_form">
+      <field name="name">terralab.testvariable.form</field>
+      <field name="model">terralab.testvariable</field>
+      <field name="arch" type="xml">
+          <form string="Test Variable Form">
+            <sheet>
+              <group>
+                <field name="test"/>
+                <field name="sample"/>
+                <field name="test_variable_type"/>
+                <field name="value"/>
+              </group>
+            </sheet>
+          </form>
+      </field>
+    </record>
+
+    <!-- Views for managing TerraLab Reports -->
+    <record model="ir.ui.view" id="terralab.report_tree">
+      <field name="name">terralab.report.tree</field>
+      <field name="model">terralab.report</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="order"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="terralab.report_form">
+      <field name="name">terralab.report.form</field>
+      <field name="model">terralab.report</field>
+      <field name="arch" type="xml">
+          <form string="Report Form">
+            <sheet>
+              <group>
+                <field name="order"/>
+              </group>
+            </sheet>
+          </form>
+      </field>
+    </record>
+
+    <!-- Customize Product (Test Type) -->
+    <record model="ir.ui.view" id="terralab.product_form_view">
+      <field name="name">TerraLab Product</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_form_view"/>
+      <field name="priority" eval="15"/>
+      <field name="arch" type="xml">
+        <notebook position="inside">
+          <page string="TerraLab Settings">
+            <group name="terralab_settings">
+              <label for="terralab_sample_type" string="Sample Type"/>
+              <div class="o_row" name="terralab_sample_type">
+                <field name="terralab_sample_type"/>
+              </div>
+              <label for="terralab_test_name" string="Test Name"/>
+              <div class="o_row" name="terralab_test_name">
+                <field name="terralab_test_name"/>
+              </div>
+            </group>
+          </page>
+          <page string="TerraLab Test Variable Types" name="terralab_test_variable_types">
+            <field name="terralab_test_variable_types" widget="one2many" mode="tree,kanban">
+              <tree string="TerraLab Test Variable Types" editable="bottom">
+                <control>
+                  <create name="add_test_variable_type_control" string="Add a Test Variable Type"/>
+                </control>
+                <field name="name" string="Name" />
+              </tree>
+            </field>
+          </page>
+        </notebook>
+      </field>
+    </record>
+
+    <!-- Customize Order -->
+    <record model="ir.ui.view" id="terralab.order_form_view">
+      <field name="name">TerraLab Order</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+      <field name="priority" eval="15"/>
+      <field name="arch" type="xml">
+        <notebook position="inside">
+          <page string="TerraLab Status" name="terralab_status">
+            <group name="terralab">
+              <label for="terralab_status" string="TerraLab Status"/>
+              <div class="o_row" name="terralab_status">
+                <field name="terralab_status"/>
+              </div>
+            </group>
+          </page>
+          <page string="TerraLab Samples" name="terralab_samples">
+            <field name="terralab_samples" widget="one2many" mode="tree,kanban">
+              <tree string="TerraLab Samples" editable="bottom">
+                <control>
+                  <create name="add_sample_control" string="Add a Sample"/>
+                </control>
+                <field name="sample_type" string="Sample Type" />
+                <field name="serial_number" string="Serial Number" />
+                <field name="tests" string="Tests">
+                  <control>
+                    <create name="add_test_control" string="Add a Test"/>
+                  </control>
+                  <tree string="Tests">
+                    <field name="test_type"/>
+                  </tree>
+                </field>
+              </tree>
+            </field>
+          </page>
+        </notebook>
+      </field>
+    </record>
+
+    <!-- Menu actions opening views on models -->
+    <record model="ir.actions.act_window" id="terralab.sampletypes_list_action">
+      <field name="name">Sample Types</field>
+      <field name="res_model">terralab.sampletype</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="terralab.testtypes_list_action">
+      <field name="name">Test Types</field>
+      <field name="res_model">product.template</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="terralab.testvariabletypes_list_action">
+      <field name="name">Test Variable Types</field>
+      <field name="res_model">terralab.testvariabletype</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="terralab.orders_list_action">
+      <field name="name">Orders</field>
+      <field name="res_model">sale.order</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="terralab.samples_list_action">
+      <field name="name">Samples</field>
+      <field name="res_model">terralab.sample</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="terralab.tests_list_action">
+      <field name="name">Tests</field>
+      <field name="res_model">terralab.test</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="terralab.testvariables_list_action">
+      <field name="name">Test Variables</field>
+      <field name="res_model">terralab.testvariable</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="terralab.reports_list_action">
+      <field name="name">Reports</field>
+      <field name="res_model">terralab.report</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="TerraLab" id="terralab.menu_root" web_icon="terralab,static/description/icon.png"/>
+
+    <!-- Menu categories -->
+    <menuitem name="Configuration" id="terralab.configuration_menuitem" parent="terralab.menu_root"/>
+    <menuitem name="Customer Data" id="terralab.customerdata_menuitem" parent="terralab.menu_root"/>
+
+    <!-- Menu action mappings -->
+    <menuitem name="Sample Types" id="terralab.sampletypes_list_menuitem" parent="terralab.configuration_menuitem" action="terralab.sampletypes_list_action"/>
+    <menuitem name="Test Types" id="terralab.testtypes_list_menuitem" parent="terralab.configuration_menuitem" action="terralab.testtypes_list_action"/>
+    <!--
+      Test Variable Types are handled in the Product Template view
+    <menuitem name="Test Variable Types" id="terralab.testvariabletypes_list_menuitem" parent="terralab.configuration_menuitem" action="terralab.testvariabletypes_list_action"/>
+    -->
+    <menuitem name="Orders" id="terralab.orders_list_menuitem" parent="terralab.customerdata_menuitem" action="terralab.orders_list_action"/>
+    <menuitem name="Samples" id="terralab.samples_list_menuitem" parent="terralab.customerdata_menuitem" action="terralab.samples_list_action"/>
+    <menuitem name="Tests" id="terralab.tests_list_menuitem" parent="terralab.customerdata_menuitem" action="terralab.tests_list_action"/>
+    <menuitem name="Test Variables" id="terralab.testvariables_list_menuitem" parent="terralab.customerdata_menuitem" action="terralab.testvariables_list_action"/>
+    <menuitem name="Reports" id="terralab.reports_list_menuitem" parent="terralab.customerdata_menuitem" action="terralab.reports_list_action"/>
+
+  </data>
+</odoo>
