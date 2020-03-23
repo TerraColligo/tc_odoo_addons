@@ -1,0 +1,6 @@
+addons-list:
+    - terralab
+    - import_product_inventory
+git-sources:
+    - TerraColligo: tc_odoo_addons/terralab
+    - TerraColligo: tc_odoo_addons/import_product_inventory
